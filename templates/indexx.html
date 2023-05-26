@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Try out</title>
+</head>
+
+<body>
+    <h1>Scrummasters: 
+        {% for scrummasters in scrummasters %}
+        <h2>Naam: {{scrummasters}}</h2>
+        <h2>Startdatum: {{scrummasters.startdatum_contract}}</h2>
+        <h2>Einddatum: {{scrummasters.einddatum_contract}}</h2>
+        {% endfor %}
+    </h1>
+    
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+*{
+  font-family:'Open Sans', sans-serif;
+}
+h1{
+  background-color: bisque;
+  margin-bottom: 10px;
+}
+
+#chart{
+  background-color: #e8e8e8;
+  margin-top: 5%;
+}
+
+#staafdiagram{
+  background-color: #e8e8e8;
+  margin-top: 5%;
+}
+
+ul{
+  border-right: 1px black solid;
+  height: 100%;
+  /* position: fixed; */
+  float: left;
+  overflow: auto;
+  margin: 5px;
+  padding-top: 5px;
+  font-size: 1rem;
+}
+  li{
+    list-style: none;
+    padding-top: 20px;
+    padding-right: 30px;
+  }
+  #logo{
+    height: 60px;
+  }
+  #instellingen{
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  #loguit{
+    padding-bottom: 3%;
+    } 
+  
+  #status{
+    height: 100px;
+    width: 300px;
+    background-color: grey;
+  }
+
+  .card text-center{
+    margin: 30px;
+    display: inline-block;
+  }
+
+  .card shadow mb-4{
+    margin: 30px;
+  }
+
+  .bezetting{
+    margin-left: 160px;
+  }
+
+

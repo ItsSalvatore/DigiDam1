@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family:'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+} 
+h1{
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 15px;
+}
+h3{
+  height: 100%;
+}
+ul{
+  border-right: 1px black solid;
+  height: 100%;
+  /* position: fixed; */
+  float: left;
+  overflow: auto;
+  margin: 5px;
+  padding-top: 5px;
+  font-size: 1rem;
+}
+
+/* html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+/* .container-fluid {
+  height: 100%;
+} */
+
+li{
+  list-style: none;
+  padding-top: 20px;
+  padding-right: 30px;
+  font: 'Open Sans', sans-serif;
+}
+
+.col-md-3{
+background-color: #e8e8e8;
+width: 20%;
+}
+
+#logo{
+  height: 60px;
+}
+#instellingen{
+  margin-top: auto;
+  padding-top: 10px;
+}
+#loguit{
+  padding-bottom: 3%;
+}
+
+#charttitle{
+  font-size: 30px;
+  text-align: center;
+}
+
+
+#staafdiagram{
+  background-color: #e8e8e8;
+  margin-top: 5%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: 30px;
+}
+
+#myChart5{
+  height: 200px;
+}
+#caption{
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* .card text-center{
+  display: inline-block;
+  margin: 10px;
+} */
+
+/* #myChart5{
+  height: 1500px;
+} */
+.progress-bar bg-warning{
+  color: #00a03c;
+}
+
+/* owen */
+#caption{
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+}
+/* owen */
+
+.nogtegaan{
+  font-weight:bold;
+  margin-left: 20px;
+}
+
+    .dropbtn {
+      background-color: #004699;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      height:30px;
+      border: none;
+      cursor: pointer;
+      border-color: #004699;
+      margin: 10px;
+      }
+      
+    
+    
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #004699;
+    }
+  
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f6f6f6;
+      min-width: 100px;
+      overflow: auto;
+      border: 1px solid #ddd;
+      z-index: 1;
+      margin: 10px;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown a:hover {
+      background-color: #ddd;}
+    
+    .show {display: block;}
