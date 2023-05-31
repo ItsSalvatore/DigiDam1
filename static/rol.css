@@ -17,7 +17,6 @@ h1{
 }
 
 ul{
-  border-right: 1px black solid;
   height: 100%;
   /* position: fixed; */
   float: left;
@@ -60,5 +59,15 @@ ul{
   .bezetting{
     margin-left: 160px;
   }
-
-
+  #style2{
+    border-top: black 3px solid;
+  }
+  #style3{
+  font-style: italic;
+  font-weight: lighter;
+  }
+  .navbar {
+    background-color:#e8e8e8;
+    font-weight: 500;
+    font-size: 18px;
+  }

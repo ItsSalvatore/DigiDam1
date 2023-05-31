@@ -15,18 +15,30 @@
 <body>
 
   <!-- Nav bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  {# <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"><img src="/static/gemeenteamsterdam-removebg-preview.png" id="logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
+        <a class="nav-item nav-link" href="/handleiding">Handleiding</a>
         <a class="nav-item nav-link active" href="/voorspellingen">Voorspellingen</a>
         <a class="nav-item nav-link" href="/">Home</a>
       </div>
     </div>
-  </nav>
+  </nav> #}
+  <div class="container">
+    <nav class="navbar navbar-light">
+      <ul class="container-fluid">
+        <li><a href="/"><img class="ml-3" src="/static/gemeenteamsterdam-removebg-preview.png" id="logo"></a></li>
+        <div class="d-flex  justify-content-end">
+        <li class="nav-item"><a href="/handleiding" class="nav-link">Handleiding</a></li>
+        <li class="nav-item"><a href="/voorspellingen" class="nav-link">Voorspellingen</a></li>
+          <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+        </div>
+      </ul>
+    </nav>
 
   <!-- end navbar -->
 
@@ -41,19 +53,6 @@
   </div> #}
 
   <!-- end status -->
-  <div class="dropdown">
-    <button style='margin-top:15px;' class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#00387A;">
-      Algemeen
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Agile Coach</a>
-      <a class="dropdown-item" href="#">Scrummaster</a>
-      <a class="dropdown-item" href="#">Project manager</a>
-      <a class="dropdown-item" href="#">RTE</a>
-      <a class="dropdown-item" href="#">Product Owner</a>
-    </div>
-  </div>
 
   <!-- begin body -->
 {# begin content  #}
@@ -85,7 +84,7 @@
 
 <div class="row">
 <h2>Het aantal benodigde extra mensen per rol</h2>
-    <table class="table">
+    <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Rol</th>
@@ -103,13 +102,13 @@
       <td id="s2024"></td>
       <td id="s2025"></td>
       <td id="s2026"></td>
-      <td id="s2027"></td>
+      <td id="s2027" style="color: red;"></td>
     </tr>
     <tr>
       <th scope="row" id="style3">AC</th>
       <td id="a2023"></td>
       <td id="a2024"></td>
-      <td id="a2025"></td>
+      <td id="a2025" style="color: red;"></td>
       <td id="a2026"></td>
       <td id="a2027"></td>
     </tr>
@@ -118,7 +117,7 @@
       <td id="p2023"></td>
       <td id="p2024"></td>
       <td id="p2025"></td>
-      <td id="p2026"></td>
+      <td id="p2026" style="color: red;"></td>
       <td id="p2027"></td>
     </tr>
     <tr>
@@ -126,24 +125,24 @@
       <td id="r2023"></td>
       <td id="r2024"></td>
       <td id="r2025"></td>
-      <td id="r2026"></td>
-      <td id="r2027"></td>
+      <td id="r2026" style="color: red;"></td>
+      <td id="r2027" style="color: red;"></td>
     </tr>
     <tr>
       <th scope="row" id="style3">PJ MNGR</th>
       <td id="pj2023"></td>
       <td id="pj2024"></td>
-      <td id="pj2025"></td>
+      <td id="pj2025" style="color: red;"></td>
       <td id="pj2026"></td>
-      <td id="pj2027"></td>
+      <td id="pj2027" style="color: red;"></td>
     </tr>
     <tr id="style2">
       <th scope="row">Totaal</th>
       <td id="t2023"></td>
       <td id="t2024"></td>
-      <td id="t2025"></td>
-      <td id="t2026"></td>
-      <td id="t2027"></td>
+      <td id="t2025" style="background-color: red; color:white"></td>
+      <td id="t2026" style="background-color: red; color:white"></td>
+      <td id="t2027" style="background-color: red; color:white"></td>
     </tr>
   </tbody>
 </table>
