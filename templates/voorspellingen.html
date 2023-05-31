@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Rollen </title>
+  <title> Voorspellingen </title>
   <link rel="stylesheet" href="{{ url_for('static', filename='rol.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -15,27 +15,18 @@
 <body>
 
   <!-- Nav bar -->
-  <div class="col-md-auto container-fluid">
-    <ul class="nav flex-column nav-pills">
-      <li><a href="/"><img src="/static/gemeenteamsterdam-removebg-preview.png" id="logo"></a></li>
-      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-      <li class="nav-item"><a href="/rollen" class="nav-link active">Rollen</a></li>
-      <li class="nav-item"><a href="/" class="nav-link">Track</a></li>
-      <li class="nav-item"><a href="/" class="nav-link">Voorspellingen</a></li>
-      <li class="nav-item dropdown" id="instellingen"><a href="/" class="nav-link dropdown-toggle"
-          data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Instellingen</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </li>
-      <li class="nav-item"><a href="/" class="nav-link">Profiel</a></li>
-      <li class="nav-item" id="loguit"><a href="/" class="nav-link">Log uit</a></li>
-    </ul>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img src="/static/gemeenteamsterdam-removebg-preview.png" id="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-item nav-link active" href="/voorspellingen">Voorspellingen</a>
+        <a class="nav-item nav-link" href="/">Home</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- end navbar -->
 
@@ -92,10 +83,75 @@
   </p>
 </div>
 
-</div>
+<div class="row">
+<h2>Het aantal benodigde extra mensen per rol</h2>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rol</th>
+      <th scope="col">2023</th>
+      <th scope="col">2024</th>
+      <th scope="col">2025</th>
+      <th scope="col">2026</th>
+      <th scope="col">2027</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="style2">
+      <th scope="row" id="style3">Scrmstr</th>
+      <td id="s2023"></td>
+      <td id="s2024"></td>
+      <td id="s2025"></td>
+      <td id="s2026"></td>
+      <td id="s2027"></td>
+    </tr>
+    <tr>
+      <th scope="row" id="style3">AC</th>
+      <td id="a2023"></td>
+      <td id="a2024"></td>
+      <td id="a2025"></td>
+      <td id="a2026"></td>
+      <td id="a2027"></td>
+    </tr>
+    <tr>
+      <th scope="row" id="style3">PO</th>
+      <td id="p2023"></td>
+      <td id="p2024"></td>
+      <td id="p2025"></td>
+      <td id="p2026"></td>
+      <td id="p2027"></td>
+    </tr>
+    <tr>
+      <th scope="row" id="style3">RTE</th>
+      <td id="r2023"></td>
+      <td id="r2024"></td>
+      <td id="r2025"></td>
+      <td id="r2026"></td>
+      <td id="r2027"></td>
+    </tr>
+    <tr>
+      <th scope="row" id="style3">PJ MNGR</th>
+      <td id="pj2023"></td>
+      <td id="pj2024"></td>
+      <td id="pj2025"></td>
+      <td id="pj2026"></td>
+      <td id="pj2027"></td>
+    </tr>
+    <tr id="style2">
+      <th scope="row">Totaal</th>
+      <td id="t2023"></td>
+      <td id="t2024"></td>
+      <td id="t2025"></td>
+      <td id="t2026"></td>
+      <td id="t2027"></td>
+    </tr>
+  </tbody>
+</table>
+  
+  </div>
 </div>
 
-
+{# <p id="2027">10</p> #}
 {# Einde content  #}
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -109,10 +165,71 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../static/chart.js"></script>
+  <script src="../static/voorspellingen.js"></script>
 
+ <script>
+  var el = document.getElementById("2027");
+  if(Number(el) < 0) {
+    el.className += "red";
+  }
+  else {
+    el.className += "green";
+  }
 
+  </script>
 
+  <script>
+  //formules scrummasters
+  let s2023; s2023 = scrmmstr.scr2023 - {{data.scrummasters}}; document.getElementById("s2023").innerHTML = s2023;
+  let s2024; s2024 = scrmmstr.scr2024 - {{data.scrummasters}}; document.getElementById("s2024").innerHTML = s2024;
+  let s2025; s2025 = scrmmstr.scr2025 - {{data.scrummasters}}; document.getElementById("s2025").innerHTML = s2025;
+  let s2026; s2026 = scrmmstr.scr2026 - {{data.scrummasters}}; document.getElementById("s2026").innerHTML = s2026;
+  let s2027; s2027 = scrmmstr.scr2027 - {{data.scrummasters}}; document.getElementById("s2027").innerHTML = s2027;
+  //formules ac
+  let a2023; a2023 = ac.ac2023 - {{data.ac}}; document.getElementById("a2023").innerHTML = a2023;
+  let a2024; a2024 = ac.ac2024 - {{data.ac}}; document.getElementById("a2024").innerHTML = a2024;
+  let a2025; a2025 = ac.ac2025 - {{data.ac}}; document.getElementById("a2025").innerHTML = a2025;
+  let a2026; a2026 = ac.ac2026 - {{data.ac}}; document.getElementById("a2026").innerHTML = a2026;
+  let a2027; a2027 = ac.ac2027 - {{data.ac}}; document.getElementById("a2027").innerHTML = a2027;
+  //formules po
+  let p2023; p2023 = po.po2023 - {{data.po}}; document.getElementById("p2023").innerHTML = p2023;
+  let p2024; p2024 = po.po2024 - {{data.po}}; document.getElementById("p2024").innerHTML = p2024;
+  let p2025; p2025 = po.po2025 - {{data.po}}; document.getElementById("p2025").innerHTML = p2025;
+  let p2026; p2026 = po.po2026 - {{data.po}}; document.getElementById("p2026").innerHTML = p2026;
+  let p2027; p2027 = po.po2027 - {{data.po}}; document.getElementById("p2027").innerHTML = p2027;
+  //formules rte
+  let r2023; r2023 = rte.rte2023 - {{data.rte}}; document.getElementById("r2023").innerHTML = r2023;
+  let r2024; r2024 = rte.rte2024 - {{data.rte}}; document.getElementById("r2024").innerHTML = r2024;
+  let r2025; r2025 = rte.rte2025 - {{data.rte}}; document.getElementById("r2025").innerHTML = r2025;
+  let r2026; r2026 = rte.rte2026 - {{data.rte}}; document.getElementById("r2026").innerHTML = r2026;
+  let r2027; r2027 = rte.rte2027 - {{data.rte}}; document.getElementById("r2027").innerHTML = r2027;
+  //formules pjmgr
+  let pj2023; pj2023 = pjmgr.pjmgr2023 - {{data.pjmgr}}; document.getElementById("pj2023").innerHTML = pj2023;
+  let pj2024; pj2024 = pjmgr.pjmgr2024 - {{data.pjmgr}}; document.getElementById("pj2024").innerHTML = pj2024;
+  let pj2025; pj2025 = pjmgr.pjmgr2025 - {{data.pjmgr}}; document.getElementById("pj2025").innerHTML = pj2025;
+  let pj2026; pj2026 = pjmgr.pjmgr2026 - {{data.pjmgr}}; document.getElementById("pj2026").innerHTML = pj2026;
+  let pj2027; pj2027 = pjmgr.pjmgr2027 - {{data.pjmgr}}; document.getElementById("pj2027").innerHTML = pj2027;
+  //formules totaal
+  let t2023; t2023 = totaal.totaal2023 - {{data.totaal}}; document.getElementById("t2023").innerHTML = t2023;
+  let t2024; t2024 = totaal.totaal2024 - {{data.totaal}}; document.getElementById("t2024").innerHTML = t2024;
+  let t2025; t2025 = totaal.totaal2025 - {{data.totaal}}; document.getElementById("t2025").innerHTML = t2025;
+  let t2026; t2026 = totaal.totaal2026 - {{data.totaal}}; document.getElementById("t2026").innerHTML = t2026;
+  let t2027; t2027 = totaal.totaal2027 - {{data.totaal}}; document.getElementById("t2027").innerHTML = t2027;
 
+  </script>
+
+ 
+
+  <script>
+  function color{
+  if (z2027[0] >= 0) {
+      $('#2027').css('color', 'red');
+    };
+  else {
+  ($('#2027').css('color', 'green');)
+  }
+  }
+  </script>
   <script>
     const ctx = document.getElementById('myChart4').getContext('2d');
     const myChart = new Chart(ctx, {
