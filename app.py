@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://kromhov:5/nwWCUEFqokge@oege.ie.hva.nl/zkromhov'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://doadmin:AVNS_9vSx-tB3ZAz1DUqXDuh@db-mysql-ams3-app-do-user-13803122-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED'
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
          'pool_recycle': 280,
          'pool_pre_ping': True,
