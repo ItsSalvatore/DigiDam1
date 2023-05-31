@@ -43,7 +43,7 @@ def view_scrummasters():
 def get_scrummasters():
     query = """SELECT *
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2027-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                            FROM medewerkers_has_rol
                            WHERE rol_id = (SELECT id
@@ -57,7 +57,7 @@ def get_scrummasters():
 def get_scrummasters_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                            FROM medewerkers_has_rol
                            WHERE rol_id = (SELECT id
@@ -71,7 +71,7 @@ def get_scrummasters_2024():
 def get_agilecoaches_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                            FROM medewerkers_has_rol
                            WHERE rol_id = (SELECT id
@@ -85,7 +85,7 @@ def get_agilecoaches_2024():
 def get_productowners_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -98,7 +98,7 @@ def get_productowners_2024():
 def get_RTE_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -111,7 +111,7 @@ def get_RTE_2024():
 def get_ATE_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -124,7 +124,7 @@ def get_ATE_2024():
 def get_projectmanagers_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -137,7 +137,7 @@ def get_projectmanagers_2024():
 def get_PMO_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -150,7 +150,7 @@ def get_PMO_2024():
 def get_PGM_2024():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2024-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
@@ -163,7 +163,7 @@ def get_PGM_2024():
 def get_productowners_2023():
     query = """SELECT COUNT(*)
                FROM medewerkers
-               WHERE einddatum_contract BETWEEN '1980-01-01' AND '2023-12-31'
+               WHERE einddatum_contract BETWEEN '1900-01-01' AND '2099-12-31'
                AND id IN (SELECT medewerker_id
                           FROM medewerkers_has_rol
                           WHERE rol_id = (SELECT id
