@@ -333,7 +333,7 @@
         <div class="col shadow" id="chart">
           <div class="p-4 ">
             <p class="fs-2 mb-1">Huidige Bezetting APP</p>
-            <p class="fs-6 fst-italic">De huidige bezetting van de rollen binnen APP, in %</p>
+            <p class="fs-6 fst-italic">De huidige bezetting van de rollen binnen APP</p>
             <canvas id="bezettingChart" width="500px" height="300"></canvas>
           </div>
         </div>
@@ -344,7 +344,7 @@
 
         <!-- medewerkers diagram -->
         <div class="shadow p-4 mb-4 bg-white" id="chart">
-          <p class="fs-2 mb-1">Medewerker bezetting APP</p>
+          <p class="fs-2 mb-1">Medewerker Bezetting APP</p>
                 <p class="fs-6 fst-italic">De huidige bezetting van medewerkers binnen APP, in absolute aantallen en %</p>
 
       <!-- select button -->
@@ -353,6 +353,7 @@
             <select class="form-select mt-3" id="progressiebar"
                   onchange=onChangeProgressionBar()
             >
+                <option value="kies jaar">Kies jaar</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
@@ -403,7 +404,7 @@
 
           <div class="card-body">
               {% if scrummasters is defined %}
-              <h4 class="small font-weight-bold">Scrummaster <span
+              <h4 class="small font-weight-bold">Scrum Masters: <span
                       class="float-right" id="scrummasterCount"></span></h4>
               <div class="progress mb-4">
                   <div class="progress-bar bg-danger" role="progressbar" style="background-color:#f0f09a"
@@ -412,7 +413,7 @@
               {%endif%}
 
               {% if agilecoaches is defined %}
-              <h4 class="small font-weight-bold"> Agile Coach <span
+              <h4 class="small font-weight-bold"> Agile Coaches: <span
                       class="float-right" id="agilecoachCount"></span></h4>
               <div class="progress mb-4">
                   <div class="progress-bar bg-warning" role="progressbar"
@@ -421,7 +422,7 @@
               {%endif%}
 
               {% if productowners is defined %}
-              <h4 class="small font-weight-bold">Product Owners <span
+              <h4 class="small font-weight-bold">Product Owners: <span
                       class="float-right" id="productownerCount"></span></h4>
               <div class="progress mb-4">
                   <div class="progress-bar" role="progressbar" 
@@ -429,8 +430,17 @@
               </div>
               {%endif%}
 
+              {% if pgm is defined %}
+              <h4 class="small font-weight-bold"> Programma Managers: <span
+                      class="float-right" id="pgmCount"></span></h4>
+              <div class="progress mb-4">
+                  <div class="progress-bar bg-info" role="progressbar"
+                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="pgmPercentage"></div>
+              </div>
+              {%endif%}
+
               {% if rte is defined %}
-              <h4 class="small font-weight-bold"> RTE <span
+              <h4 class="small font-weight-bold"> Release Train Engineers: <span
                       class="float-right" id="rteCount"></span></h4>
               <div class="progress mb-4">
                   <div class="progress-bar bg-info" role="progressbar"
@@ -439,16 +449,16 @@
               {%endif%}
 
               {% if ate is defined %}
-              <h4 class="small font-weight-bold"> ATE <span
+              <h4 class="small font-weight-bold"> Agile Transformative Experts: <span
                       class="float-right" id="ateCount"></span></h4>
-              <div class="progress mb-4">
+              <div class="progress mb-4" >
                   <div class="progress-bar bg-info" role="progressbar"
-                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="atePercentage"></div>
+                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="atePercentage" style="background-color: red; !important"></div>
               </div>
               {%endif%}
 
               {% if pjm is defined %}
-              <h4 class="small font-weight-bold"> Project Managers <span
+              <h4 class="small font-weight-bold"> Project Managers: <span
                       class="float-right" id="pjmCount"></span></h4>
               <div class="progress mb-4">
                   <div class="progress-bar bg-info" role="progressbar"
@@ -457,22 +467,14 @@
               {%endif%}
 
               {% if pmo is defined %}
-              <h4 class="small font-weight-bold"> PMO's <span
+              <h4 class="small font-weight-bold"> Programma Management Ondersteuners: <span
                       class="float-right" id="pmoCount"></span></h4>
               <div class="progress mb-4">
-                  <div class="progress-bar bg-info" role="progressbar"
+                  <div class="progress-bar bg-dark" role="progressbar"
                       aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="pmoPercentage"></div>
               </div>
               {%endif%}
 
-              {% if pgm is defined %}
-              <h4 class="small font-weight-bold"> PGM's <span
-                      class="float-right" id="pgmCount"></span></h4>
-              <div class="progress mb-4">
-                  <div class="progress-bar bg-info" role="progressbar"
-                      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="pgmPercentage"></div>
-              </div>
-              {%endif%}
             </div>
         </div>
 
@@ -521,24 +523,27 @@
   var chartV2 = new Chart(chart2, {
       type: 'pie',
       data: {
-          labels: ['Scrummaster', 'Agile coach', 'Ambitie coach', 'PJ manager', 'PO', 'RTE'],
+          //labels: ['Scrum Masters', 'Agile Coaches', 'Product Owners', 'Programma Managers', 'Release Train Engineers', 'Agile Transformative Experts', 'Project Managers', 'Programma Management Ondersteuners' ],
+          //labels: ['SM', 'AC', 'PO', 'PGM', 'RTE', 'ATE', 'PJM', 'PMO' ],
+          labels: ['Scrum Masters', 'Agile Coaches', 'Product Owners', 'Project Managers', 'Release Train Engineers'],
           datasets: [{
               label: '# of Employees',
-              data: [{{data.scrummasters}}, {{data.AC}}, {{data.AM}}, {{data.PJ}}, {{data.PO}}, {{data.RTE}}],
+              data:  [{{data.sm}}, {{data.ac}}, {{data.po}}, {{data.pjm}}, {{data.rte}}],
+              //data: [{{data.sm}}, {{data.ac}}, {{data.po}}, {{data.pgm}}, {{data.rte}}, {{data.ate}}, {{data.pjm}}, {{data.pmo}}],
               backgroundColor: [
                   '#abd7f8',
                   '#c6ebdb',
                   '#8fd8b7',
+                  '#c99af4',                
                   '#fde460',
-                  '#c99af4',
                   '#bdc8e1',
               ],
               borderColor: [
                   '#abd7f8',
                   '#c6ebdb',
                   '#8fd8b7',
-                  '#fde460',
                   '#c99af4',
+                  '#fde460',
                   '#bdc8e1',
               ],
               borderWidth: 1

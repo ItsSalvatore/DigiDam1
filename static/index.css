@@ -166,4 +166,5 @@ width: 20%;
     }
     .bg-danger {
       --bs-bg-opacity: 1;
-      background-color: #f0f09a,var(#f0f09a)}
+      background-color: #f0f09a,var(#f0f09a);
+    }

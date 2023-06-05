@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://doadmin:AVNS_9vSx-tB3ZAz1DUqXDuh@db-mysql-ams3-app-do-user-13803122-0.b.db.ondigitalocean.com:25060/defaultdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://kromhov:5/nwWCUEFqokge@oege.ie.hva.nl/zkromhov'
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
          'pool_recycle': 280,
          'pool_pre_ping': True,
@@ -16,12 +16,15 @@ db.init_app(app)
 @app.route('/')
 def view_scrummasters():
     data = {
-        "scrummasters" : Medewerkers_rol.query.filter_by(rol_id='1').count(),
-        "AC" : Medewerkers_rol.query.filter_by(rol_id='2').count(),
-        "AM" : Medewerkers_rol.query.filter_by(rol_id='7').count(),
-        "PJ" : Medewerkers_rol.query.filter_by(rol_id='6').count(),
-        "PO" : Medewerkers_rol.query.filter_by(rol_id='3').count(),
-        "RTE" : Medewerkers_rol.query.filter_by(rol_id='4').count()
+        "sm" : Medewerkers_rol.query.filter_by(rol_id='1').count(),
+        "ac" : Medewerkers_rol.query.filter_by(rol_id='2').count(),
+        "po" : Medewerkers_rol.query.filter_by(rol_id='3').count(),
+        "pgm" : Medewerkers_rol.query.filter_by(rol_id='4').count(),
+        "rte" : Medewerkers_rol.query.filter_by(rol_id='5').count(),
+        "ate" : Medewerkers_rol.query.filter_by(rol_id='6').count(),
+        "pjm" : Medewerkers_rol.query.filter_by(rol_id='7').count(),
+        "pmo" : Medewerkers_rol.query.filter_by(rol_id='8').count(),
+        "totaal" : Medewerkers_rol.query.count()
     }
 
     totaalRollen = {
@@ -29,7 +32,7 @@ def view_scrummasters():
             2020: 35,
             2021: 40,
             2022: 50,
-            2023: 25,
+            2023: 42,
             2024: 35,
             2025: 40,
             2026: 45,
@@ -151,7 +154,7 @@ def view_scrummasters():
     PGM_2024 = get_PGM_2024()
     productowners_2023 = get_productowners_2023
 
-    return render_template('index.html',opdrachten=count_list, totaalRollen=totaalRollen, agilecoaches=agilecoaches, productowners=productowners, rte=rte, ate=ate, pjm=pjm, pmo=pmo, pgm=pgm, productowners_2023=productowners_2023, data=data, scrummasters=scrummasters, scrummasters_2024=scrummasters_2024, agilecoaches_2024=agilecoaches_2024,productowners_2024=productowners_2024,RTE_2019=RTE_2024,ATE_2024=ATE_2024,projectmanager_2024=projectmanager_2024,PMO_2024=PMO_2024,PGM_2024=PGM_2024)
+    return render_template('index.html', opdrachten=count_list, totaalRollen=totaalRollen, agilecoaches=agilecoaches, productowners=productowners, rte=rte, ate=ate, pjm=pjm, pmo=pmo, pgm=pgm, productowners_2023=productowners_2023, data=data, scrummasters=scrummasters, scrummasters_2024=scrummasters_2024, agilecoaches_2024=agilecoaches_2024,productowners_2024=productowners_2024,RTE_2019=RTE_2024,ATE_2024=ATE_2024,projectmanager_2024=projectmanager_2024,PMO_2024=PMO_2024,PGM_2024=PGM_2024)
 
 # definitieve test.
 
@@ -405,27 +408,17 @@ def get_allopdracht():
     return result.all()
 
 
-@app.route('/users')
-def view_users():
-    data = {
-        "scrummasters" : Medewerkers_rol.query.filter_by(rol_id='1').count(),
-        "AC" : Medewerkers_rol.query.filter_by(rol_id='2').count(),
-        "AM" : Medewerkers_rol.query.filter_by(rol_id='7').count(),
-        "PJ" : Medewerkers_rol.query.filter_by(rol_id='6').count(),
-        "PO" : Medewerkers_rol.query.filter_by(rol_id='3').count(),
-        "RTE" : Medewerkers_rol.query.filter_by(rol_id='4').count()
-    }
-    return render_template('userlist.html', data = data)
-
 @app.route('/voorspellingen')
 def view_voorspellingen():
     data = {
-        "scrummasters" : Medewerkers_rol.query.filter_by(rol_id='1').count(),
+        "sm" : Medewerkers_rol.query.filter_by(rol_id='1').count(),
         "ac" : Medewerkers_rol.query.filter_by(rol_id='2').count(),
-        "am" : Medewerkers_rol.query.filter_by(rol_id='7').count(),
-        "pjmgr" : Medewerkers_rol.query.filter_by(rol_id='6').count(),
         "po" : Medewerkers_rol.query.filter_by(rol_id='3').count(),
-        "rte" : Medewerkers_rol.query.filter_by(rol_id='4').count(),
+        "pgm" : Medewerkers_rol.query.filter_by(rol_id='4').count(),
+        "rte" : Medewerkers_rol.query.filter_by(rol_id='5').count(),
+        "ate" : Medewerkers_rol.query.filter_by(rol_id='6').count(),
+        "pjm" : Medewerkers_rol.query.filter_by(rol_id='7').count(),
+        "pmo" : Medewerkers_rol.query.filter_by(rol_id='8').count(),
         "totaal" : Medewerkers_rol.query.count()
     }
     return render_template('voorspellingen.html', data = data)
