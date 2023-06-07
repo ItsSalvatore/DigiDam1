@@ -168,3 +168,6 @@ width: 20%;
       --bs-bg-opacity: 1;
       background-color: #f0f09a,var(#f0f09a);
     }
+    #info{
+      float: right;
+    }
