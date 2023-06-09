@@ -1,13 +1,3 @@
-'''
-06-06-2023
-Team Digidam
-
-Beschrijving app.py:
-
-
-'''
-
-
 from flask import Flask, render_template, request, jsonify
 from models import db, Medewerkers_rol, Medewerkers
 from flask_mysqldb import MySQL
@@ -43,7 +33,7 @@ def view_scrummasters():
     # kijk naar alle opdrachten
     for opdracht in opdrachten:
         year1 = opdracht[3].year
-        # check of begindatum/beginjaar al in de dictonary zit
+        # check of begindatum/beginjaar al in de dictionary zit
         if year1 not in count_list:
             # zo nee, voeg toe
             count_list[year1] = 1
@@ -51,16 +41,7 @@ def view_scrummasters():
             # zo ja, verhoog waarde met 1
             count_list[year1] = count_list[year1] + 1
 
-    # for opdracht in opdrachten: 
-    #     year2 = opdracht[4].year
-    #     # check of begindatum/beginjaar al in de dictonary zit
-    #     if year2 not in count_list:
-    #         # zo nee, voeg toe
-    #         count_list[year2] = 1
-    #     else: 
-    #         # zo ja, verhoog waarde met 1
-    #         count_list[year2] = count_list[year2] + 1
-            
+
     # Krijg alle rollen vanuit database
     scrummasters = get_scrummasters()
     agilecoaches = get_agilecoaches()
